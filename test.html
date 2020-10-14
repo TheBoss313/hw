@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<h1>Hello</h1>
+<p>{{ description }}</p>
+<form action="" method="post">
+    {{ form.csrf_token() }}
+
+    {% for field in form if field.name != "csrf_token" and field.name != "submit" %}
+    <p>{{ field.label() }}</p>
+    <p>{{ field }}</p>
+    {% endfor %}
+    {% for error in field.errors %}
+                {{ error }}
+    {% endfor %}
+    {{ form.submit() }}
+    {% if result %}
+    <p>{{ result }}</p>
+    {% endif %}
+</form>
+</body>
+</html>
